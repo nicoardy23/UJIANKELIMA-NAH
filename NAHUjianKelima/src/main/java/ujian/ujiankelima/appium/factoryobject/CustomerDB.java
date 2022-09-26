@@ -3,6 +3,7 @@ package ujian.ujiankelima.appium.factoryobject;
 import org.openqa.selenium.interactions.touch.TouchActions;
 import org.openqa.selenium.support.PageFactory;
 
+import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
@@ -47,7 +48,7 @@ public class CustomerDB {
 	private MobileElement cekNewsLetter;
 	@AndroidFindBy(id = "de.georgsieber.customerdb:id/buttonBirthday")
 	private MobileElement dobSet;
-	@AndroidFindBy(xpath = "//android.view.View[@content-desc=\"28 September 2022\"]")
+	@AndroidFindBy(xpath = "//android.view.View[@content-desc=\"09 September 2022\"]")
 	private MobileElement validDate;
 	@AndroidFindBy(id = "android:id/button1")
 	private MobileElement okButton;
@@ -60,6 +61,16 @@ public class CustomerDB {
 	private MobileElement applyButton;
 	@AndroidFindBy(id = "de.georgsieber.customerdb:id/textViewCustomerListItem1")
 	private MobileElement valid;
+	
+	// Using Text
+/*	@AndroidFindBy(uiAutomator = "new UiScrollable(new UiSelector().scrollable(true))" +
+	        ".scrollIntoView(new UiSelector().text(\"Address\"))")
+	private MobileElement element; */
+	
+	//Using ID
+/*	@AndroidFindBy(uiAutomator = "new UiScrollable(new UiSelector().scrollable(true))" +
+			".scrollIntoView(new UiSelector().resourceIdMatches(\".*textViewAddress.*\"))")
+	private MobileElement element; */
 
 	
 	// Method Cust
@@ -82,6 +93,19 @@ public class CustomerDB {
 	}
 	
 	public void customerAddress(String adr, String zip, String ct, String cntry) {
+		// Using Text
+//		element = (MobileElement) driver.findElement(MobileBy.AndroidUIAutomator(
+//		        "new UiScrollable(new UiSelector().scrollable(true))" +
+//		         ".scrollIntoView(new UiSelector().text(\"Address\"))"));
+		
+		//Using ID
+//		element = (MobileElement) driver.findElement(MobileBy.AndroidUIAutomator(
+//		        "new UiScrollable(new UiSelector().scrollable(true))" +
+//		         ".scrollIntoView(new UiSelector().resourceIdMatches(\".*textViewAddress.*\"))"));
+		
+		
+		driver.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector()."
+				+ "scrollable(true).instance(0)).scrollIntoView(new UiSelector().textContains(\"Address\").instance(0))").click();
 		address.sendKeys(adr);
 		zipCode.sendKeys(zip);
 		city.sendKeys(ct);
@@ -97,6 +121,8 @@ public class CustomerDB {
 	}
 	
 	public void customerCekLetter() {
+		driver.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector()."
+				+ "scrollable(true).instance(0)).scrollIntoView(new UiSelector().textContains(\"Newsletter\").instance(0))").click();
 		cekNewsLetter.click();
 	}
 
@@ -109,7 +135,7 @@ public class CustomerDB {
 	}
 	
 
-	public void customerBirthSet() throws InterruptedException {
+	public void customerBirthSet() {
 		dobSet.click();
 		validDate.click();
 		okButton.click();

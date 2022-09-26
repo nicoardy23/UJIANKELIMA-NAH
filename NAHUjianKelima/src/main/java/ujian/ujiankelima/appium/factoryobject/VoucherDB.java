@@ -1,7 +1,10 @@
 package ujian.ujiankelima.appium.factoryobject;
 
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.interactions.touch.TouchActions;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
@@ -13,6 +16,7 @@ public class VoucherDB {
 
 	public VoucherDB(AndroidDriver<MobileElement> driver) {
 		this.driver = driver;
+		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 		PageFactory.initElements(new AppiumFieldDecorator(driver), this);
 	}
 
@@ -35,10 +39,12 @@ public class VoucherDB {
 	// Valid Date
 	@AndroidFindBy(id = "de.georgsieber.customerdb:id/buttonValidUntil")
 	private MobileElement voucherValid;
-	@AndroidFindBy(xpath = "//android.view.View[@content-desc=\"28 September 2022\"]")
+	@AndroidFindBy(xpath = "//android.view.View[@content-desc=\"04 October 2022\"]")
 	private MobileElement validDate;
 	@AndroidFindBy(id = "android:id/button1")
 	private MobileElement okButton;
+	@AndroidFindBy(id = "android:id/next")
+	private MobileElement next;
 	
 	// Apply and Validation
 	@AndroidFindBy(id = "de.georgsieber.customerdb:id/action_edit_done")
@@ -71,12 +77,27 @@ public class VoucherDB {
 		notes.sendKeys(note);
 	}
 	
+	public void scrollValid()  {
+		driver.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector()."
+				+ "scrollable(true).instance(0)).scrollIntoView(new UiSelector().textContains(\"NO DATE SET\").instance(0))").click();
+		
+	}
+	
+	public void addNotes(String note) {
+		notes.click();
+		notes.sendKeys(note);
+	}
+	
 	public void voucherValid() {
+//		driver.navigate().refresh();
 		voucherValid.click();
-		validDate.click();
+		next.click();
+		driver.findElementsByAccessibilityId("03 October 2022");
+//		validDate.click();
 		okButton.click();
 	}
 	
+
 	public void applyBtn() {
 		applyButton.click();
 	}

@@ -49,14 +49,16 @@ public class CustomerSDRunner {
 	}
 	
 	@Test(priority = 0)
-	public void CustAdd() throws InterruptedException {
+	public void CustAdd() {
 //		cust.agreeButton();
 		cust.customerAdd();
 		cust.customerName("Nico", "Ardy");
 		cust.customerContact("087874923715", "ardynico23@gmail.com");
 		cust.customerAddress("Pesakih", "11750", "Duri Kosambi", "Jakarta");
 		cust.customerGroup("Nexsoft");
+		cust.customerCekLetter();
 		cust.customerNotes("Makan");
+		cust.customerBirthSet();
 		
 /*		nu such element karena belum dapat method untuk swipe layar */
 //		cust.customerBirthSet();
@@ -74,14 +76,16 @@ public class CustomerSDRunner {
 		vou.voucherAdd();
 		vou.voucherValue(2.0);
 		vou.voucherNum(1);
-		vou.voucherValid();
+		vou.addNotes("Voucher Makan");
+//		vou.scrollValid();
+//		vou.voucherValid();
 		vou.applyBtn();
 		assertTrue(vou.getVoucher().contains("2.0"));
 		System.out.println("============ ADD VOUCHER SUCCESS ============");
 	}
 	
 	@Test(priority = 2)
-	public void CustEdit() throws InterruptedException {
+	public void CustEdit() {
 		edit.customerMenu();
 		edit.customerTap();
 		edit.customerEdit();
@@ -89,7 +93,9 @@ public class CustomerSDRunner {
 		edit.customerContact("081280525192", "nicoardy23@gmail.com");
 		edit.customerAddress("Pesakih", "11750", "Duri Kosambi", "Jakarta");
 		edit.customerGroup("Nexsoft");
+		edit.customerCekLetter();
 		edit.customerNotes("Minum");
+		cust.customerBirthSet();
 		
 /*		nu such element karena belum dapat method untuk swipe layar */
 //		cust.customerBirthSet();

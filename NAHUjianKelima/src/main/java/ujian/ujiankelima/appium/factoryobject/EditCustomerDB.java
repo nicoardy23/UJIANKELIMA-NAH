@@ -53,7 +53,7 @@ public class EditCustomerDB {
 	// No Such Element karena blum bisa scroll page
 	@AndroidFindBy(id = "de.georgsieber.customerdb:id/buttonBirthday")
 	private MobileElement dobSet;
-	@AndroidFindBy(xpath = "//android.view.View[@content-desc=\"23 September 2022\"]")
+	@AndroidFindBy(xpath = "//android.view.View[@content-desc=\"13 September 2022\"]")
 	private MobileElement validDate;
 	@AndroidFindBy(id = "android:id/button1")
 	private MobileElement okButton;
@@ -99,6 +99,8 @@ public class EditCustomerDB {
 	}
 	
 	public void customerAddress(String adr, String zip, String ct, String cntry) {
+		driver.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector()."
+				+ "scrollable(true).instance(0)).scrollIntoView(new UiSelector().textContains(\"Address\").instance(0))").click();
 		address.sendKeys(adr);
 		zipCode.sendKeys(zip);
 		city.sendKeys(ct);
@@ -125,6 +127,8 @@ public class EditCustomerDB {
 	
 	// Still error method
 	public void customerCekLetter() {
+		driver.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector()."
+				+ "scrollable(true).instance(0)).scrollIntoView(new UiSelector().textContains(\"Newsletter\").instance(0))").click();
 		cekNewsLetter.click();
 	}
 	

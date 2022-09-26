@@ -6,7 +6,7 @@
       <class name="ujian.ujiankelima.appium.runner.CustomerSDRunner">
         <methods>
           <include name="pageObject"/>
-          <include name="CustEdit"/>
+          <include name="voucherAdd"/>
           <include name="setUp"/>
         </methods>
       </class> <!-- ujian.ujiankelima.appium.runner.CustomerSDRunner -->
