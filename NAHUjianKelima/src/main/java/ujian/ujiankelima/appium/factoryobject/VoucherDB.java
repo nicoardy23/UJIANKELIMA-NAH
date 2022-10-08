@@ -79,8 +79,8 @@ public class VoucherDB {
 	
 	public void scrollValid()  {
 		driver.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector()."
-				+ "scrollable(true).instance(0)).scrollIntoView(new UiSelector().textContains(\"NO DATE SET\").instance(0))").click();
-		
+				+ "scrollable(true).instance(0)).scrollIntoView(new UiSelector().xpath(\"(//android.widget.ImageButton[@content-desc=\"Remove\"])[3]\").instance(0))").click();
+//		textContains(\"Valid Until\")
 	}
 	
 	public void addNotes(String note) {

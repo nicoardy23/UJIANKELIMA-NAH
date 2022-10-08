@@ -77,8 +77,8 @@ public class CustomerSDRunner {
 		vou.voucherValue(2.0);
 		vou.voucherNum(1);
 		vou.addNotes("Voucher Makan");
-//		vou.scrollValid();
-//		vou.voucherValid();
+		vou.scrollValid();
+		vou.voucherValid();
 		vou.applyBtn();
 		assertTrue(vou.getVoucher().contains("2.0"));
 		System.out.println("============ ADD VOUCHER SUCCESS ============");
